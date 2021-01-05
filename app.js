@@ -3,14 +3,14 @@
 *   uncomment to setup standard MQTT Broker
 *
 */
-// const aedes = require('aedes')()
-// const server = require('net').createServer(aedes.handle)
-// const port = 8080
+const aedes = require('aedes')()
+const server = require('net').createServer(aedes.handle)
+const port = 8080
 
-// server.listen(port, function () {
-//     console.log('server started and listening on port ', port);
-//     aedes.publish({ topic: 'test/broker/isWorking', payload: "I'm broker" });
-// })
+server.listen(port, function () {
+    console.log('server started and listening on port ', port);
+    aedes.publish({ topic: 'test/broker/isWorking', payload: "I'm broker" });
+})
 
 
 /*
@@ -18,17 +18,17 @@
 *   uncomment to setup MQTT over websockets
 *
 */
-const aedes = require('aedes')()
-const httpServer = require('http').createServer()
-const ws = require('websocket-stream')
-const port = process.env.PORT || 3000
+// const aedes = require('aedes')()
+// const httpServer = require('http').createServer()
+// const ws = require('websocket-stream')
+// const port = process.env.PORT || 3000
 
-ws.createServer({ server: httpServer }, aedes.handle);
+// ws.createServer({ server: httpServer }, aedes.handle);
 
-httpServer.listen(port, function () {
-    // console.log('Starting MQTT broker on port:', port);
-    aedes.publish({ topic: 'test/MQTTbroker/isWorking', payload: "I'm broker" });
-});
+// httpServer.listen(port, function () {
+//     // console.log('Starting MQTT broker on port:', port);
+//     aedes.publish({ topic: 'test/MQTTbroker/isWorking', payload: "I'm broker" });
+// });
 
 
 
